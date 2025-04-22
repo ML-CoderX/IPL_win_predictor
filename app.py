@@ -3,6 +3,7 @@ import pickle as p
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from PIL import Image
 
 # Page config
 st.set_page_config(page_title="IPL Win Predictor", layout="centered")
@@ -90,16 +91,30 @@ if st.button('Predict Probability'):
         win = result[0][1]
 
         # Show logos
-        col_logo1, col_vs, col_logo2 = st.columns([4, 1, 4])
+        # Resize function
+        def resize_image(path, size=(150, 150)):
+            img = Image.open(path).convert("RGBA")  # Convert to handle jpg/png
+            return img.resize(size)
+
+
+        # Resize logos
+        batting_logo = resize_image(team_logos[batting_team])
+        bowling_logo = resize_image(team_logos[bowling_team])
+
+        # Show logos with spacing and uniform size
+        col_logo1, col_vs, spacer, col_logo2 = st.columns([4, 1, 0.5, 4])
 
         with col_logo1:
-            st.image(team_logos[batting_team], width=150, caption=batting_team)
+            st.image(batting_logo, caption=batting_team)
 
         with col_vs:
             st.markdown("<h3 style='text-align: center; margin-top: 50px;'>🆚</h3>", unsafe_allow_html=True)
 
+        with spacer:
+            st.write("")
+
         with col_logo2:
-            st.image(team_logos[bowling_team], width=150, caption=bowling_team)
+            st.image(bowling_logo, caption=bowling_team)
 
         # Prediction Results
         st.markdown("### 🧮 Win Probability")
