@@ -2,12 +2,16 @@ import streamlit as st
 import pickle as p
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import os
 # Page config
 st.set_page_config(page_title="IPL Win Predictor", layout="centered")
 
-# Load model
-pipe = p.load(open('C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\pipe.pkl', 'rb'))
+current_dir = os.path.dirname(__file__)
+pipe_path = os.path.join(current_dir, 'pipe.pkl')
+
+with open(pipe_path, 'rb') as f:
+    pipe = p.load(f)
+
 
 # Team Logos (URLs or local paths if needed)
 team_logos = {
