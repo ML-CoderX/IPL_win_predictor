@@ -3,6 +3,7 @@ import pickle as p
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+
 # Page config
 st.set_page_config(page_title="IPL Win Predictor", layout="centered")
 
@@ -15,14 +16,14 @@ with open(pipe_path, 'rb') as f:
 
 # Team Logos (URLs or local paths if needed)
 team_logos = {
-    'Sunrisers Hyderabad': "C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\sunrisers_hyderabad.jpg",
-    'Mumbai Indians': "C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\mumbai_indians.png",
-    'Royal Challengers Bangalore': 'C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\rcb.jpg',
-    'Kolkata Knight Riders': 'C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\kkr.png',
-    'Kings XI Punjab': 'C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\kings punjab.png',
-    'Chennai Super Kings': "C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\csk.png",
-    'Rajasthan Royals': 'C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\rajasthan.png',
-    'Delhi Capitals': 'C:\\Users\\rsaad\\PycharmProjects\\ipl_win_predictor\\delhi.png'
+    'Sunrisers Hyderabad': 'team_logos/sunrisers_hyderabad.jpg',
+    'Mumbai Indians': 'team_logos/mumbai_indians.png',
+    'Royal Challengers Bangalore': 'team_logos/rcb.jpg',
+    'Kolkata Knight Riders': 'team_logos/kkr.png',
+    'Kings XI Punjab': 'team_logos/kings punjab.png',
+    'Chennai Super Kings': 'team_logos/csk.png',
+    'Rajasthan Royals': 'team_logos/rajasthan.png',
+    'Delhi Capitals': 'team_logos/delhi.png'
 }
 
 teams = list(team_logos.keys())
